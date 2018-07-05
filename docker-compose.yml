@@ -1,0 +1,18 @@
+version: "2"
+services:
+  krakatoa-api:
+    build: .
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/krakatoa
+    volumes:
+      - /e/github.com/krakatoa/krakatoa-api:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    tty: true
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"

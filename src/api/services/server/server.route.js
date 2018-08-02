@@ -8,4 +8,10 @@ router
   .get(server.findAll)
   .post(server.create);
 
+router
+  .route("/:serverId")
+  .get(server.get)
+  .put(server.update)
+  .delete(server.remove);
+
 module.exports = router;

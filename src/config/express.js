@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const routes = require("../api/routes/v1");
 const { logs } = require("./vars");
 
@@ -12,6 +13,9 @@ app.use(morgan(logs));
 // parse body params and attache them to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// enable CORS - Cross Origin Resource Sharing
+app.use(cors());
 
 // Use middleware to set the default Content-Type
 app.use(function(req, res, next) {

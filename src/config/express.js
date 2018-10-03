@@ -1,6 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const compress = require("compression");
+const methodOverride = require("method-override");
 const cors = require("cors");
 const routes = require("../api/routes/v1");
 const { logs } = require("./vars");
@@ -11,11 +13,18 @@ const app = express();
 app.use(morgan(logs));
 
 // parse body params and attache them to req.body
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
+
+// gzip compression
+app.use(compress());
+
+// lets you use HTTP verbs such as PUT or DELETE
+// in places where the client doesn't support it
+app.use(methodOverride());
 
 // Use middleware to set the default Content-Type
 app.use(function(req, res, next) {

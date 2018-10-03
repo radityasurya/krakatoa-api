@@ -38,8 +38,7 @@ exports.get = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  console.log(req.body);
-  if (!req.body) {
+  if (Object.keys(req.body).length === 0) {
     return res.status(400).send({
       message: "Server content can not be empty"
     });
@@ -68,7 +67,7 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body) {
+  if (Object.keys(req.body).length === 0) {
     return res.status(httpStatus.BAD_REQUEST).send({
       message: "Server content can not be empty"
     });

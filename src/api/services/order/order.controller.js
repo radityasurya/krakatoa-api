@@ -14,8 +14,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  console.log(req.body);
-  if (!req.body) {
+  if (Object.keys(req.body).length === 0) {
     return res.status(400).send({
       message: "Order content can not be empty"
     });
@@ -83,7 +82,7 @@ exports.get = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body) {
+  if (Object.keys(req.body).length === 0) {
     return res.status(httpStatus.BAD_REQUEST).send({
       message: "Order content can not be empty"
     });

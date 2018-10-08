@@ -5,9 +5,9 @@ services:
     environment:
       - MONGO_URI=mongodb://mongodb:27017/krakatoa
     volumes:
-      - /e/github.com/krakatoa/krakatoa-api:/app
+      - .:/app
     ports:
-      - "3000:3000"
+      - "3001:3001"
     depends_on:
       - mongodb
     tty: true

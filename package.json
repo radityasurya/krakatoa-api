@@ -7,7 +7,7 @@
     "src"
   ],
   "scripts": {
-    "start": "nodemon -L src/index.js",
+    "start": "node src/index.js",
     "docker": "docker-compose up"
   },
   "repository": "https://github.com/radityasurya/krakatoa-api",
